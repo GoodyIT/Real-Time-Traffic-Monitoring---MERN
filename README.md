@@ -1,7 +1,7 @@
 # Singarpore - Malaysia Traffic real time monitor app
 
 - Spec:
-    NodeJs
+    NodeJs \n
     ExpressJS
     MongoDB
     React / Redux / Reduc-Thunk
