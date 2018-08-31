@@ -38,6 +38,10 @@ module.exports = {
             },
           },
           {
+            // Preprocess our own .scss files
+            loader: 'sass-loader',
+          },
+          {
             loader: 'postcss-loader',
             options: {
               plugins: () => [
@@ -52,6 +56,12 @@ module.exports = {
             },
           },
         ],
+      },
+      {
+        // Preprocess our own .scss files
+        test: /\.scss$/,
+        exclude: /node_modules/,
+        use: ['style-loader', 'css-loader', 'sass-loader'],
       },
       {
         test: /\.jpe?g$|\.gif$|\.png$|\.svg$/i,

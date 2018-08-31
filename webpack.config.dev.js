@@ -23,7 +23,6 @@ module.exports = {
   output: {
     path: __dirname,
     filename: 'app.js',
-    publicPath: 'http://0.0.0.0:8000/',
   },
 
   resolve: {
@@ -37,7 +36,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.s?css$/,
+        test: /\.css$/,
         exclude: /node_modules/,
         use: [
           {
@@ -65,8 +64,12 @@ module.exports = {
                 }),
               ],
             },
-          },
+          }
         ],
+      },
+      {
+        test: /\.scss$/,
+        loaders: [ 'style-loader', 'css-loader', 'sass-loader' ],
       },
       {
         test: /\.css$/,
