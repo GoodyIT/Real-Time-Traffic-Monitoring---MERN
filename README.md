@@ -11,6 +11,8 @@
    #### Weather API
    #### Google Adsense
    #### Real Time Traffic Phone
+   #### Cron job 
+   #### MySQL Support
   
 ## How to run  
    #### npm install
