@@ -1,7 +1,20 @@
 .container {
-  max-width: calc(768px + 16px * 2);
+  // max-width: calc(768px + 16px * 2);
   margin: 0 auto;
   display: flex;
   min-height: 100%;
   flex-direction: column;
 }
+
+a {
+  text-decoration: none;
+}
+
+.home-page {
+  background: #fbfbfc;
+  border: 1px solid #85baea;
+}
+
+.app-bar {
+  background-image: linear-gradient(to right, #2c79f2, #00ccfd) !important;
+} 

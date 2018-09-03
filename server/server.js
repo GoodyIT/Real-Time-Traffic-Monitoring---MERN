@@ -46,24 +46,40 @@ import Helmet from 'react-helmet';
 import routes from '../client/routes';
 import { fetchComponentData } from './util/fetchData';
 import posts from './routes/post.routes';
-import dummyData from './dummyData';
 import serverConfig from './config';
+import { scheduleOnTrafficFromSGtoMY, scheduleOnTrafficFromMYtoSG, scheduleOnWeather, scheduleOnClearTables } from './controllers/weather.controller.js';
+import { scheduleOnCamera } from './controllers/camera.controller.js';
+
+// Run the cron job for weather data in every 5 min
+scheduleOnWeather();
+
+// Run the cron job for traffic data from Singpore to Malaysia in every 5 min
+scheduleOnTrafficFromSGtoMY();
+
+// Run the cron job for traffic data from Malaysia to Singpore in every 5 min
+scheduleOnTrafficFromMYtoSG();
+
+// Run the cron job for real time camear data of traffic
+scheduleOnCamera();
+
+// Run the cron job to clear tables for traffic, camera
+scheduleOnClearTables();
 
 // Set native promises as mongoose promise
-mongoose.Promise = global.Promise;
+// mongoose.Promise = global.Promise;
 
-// MongoDB Connection
-if (process.env.NODE_ENV !== 'test') {
-  mongoose.connect(serverConfig.mongoURL, (error) => {
-    if (error) {
-      console.error('Please make sure Mongodb is installed and running!'); // eslint-disable-line no-console
-      throw error;
-    }
+// // MongoDB Connection
+// if (process.env.NODE_ENV !== 'test') {
+//   mongoose.connect(serverConfig.mongoURL, (error) => {
+//     if (error) {
+//       console.error('Please make sure Mongodb is installed and running!'); // eslint-disable-line no-console
+//       throw error;
+//     }
 
-    // feed some dummy data in DB.
-    dummyData();
-  });
-}
+//     // feed some dummy data in DB.
+//     dummyData();
+//   });
+// }
 
 // Apply body Parser and server public assets and routes
 app.use(compression());
@@ -93,7 +109,21 @@ const renderFullPage = (html, initialState) => {
         ${isProdMode ? `<link rel='stylesheet' href='${assetsManifest['/app.css']}' />` : ''}
         <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'/>
         <link rel="shortcut icon" href="http://res.cloudinary.com/hashnode/image/upload/v1455629445/static_imgs/mern/mern-favicon-circle-fill.png" type="image/png" />
-      </head>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYc3U2zpF5V8DiAsY9PSSq0SF_CeRbdkA"></script>
+        <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+        <script>
+          var OneSignal = window.OneSignal || [];
+          OneSignal.push(function() {
+            OneSignal.init({
+              appId: "cf096ee6-4bb3-48bc-b7f7-c3cbf11b8c6d",
+              autoRegister: false,
+              notifyButton: {
+                enable: true,
+              },
+            });
+          });
+        </script>
+        </head>
       <body>
         <div id="root">${process.env.NODE_ENV === 'production' ? html : `<div>${html}</div>`}</div>
         <script>

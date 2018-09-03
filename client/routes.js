@@ -2,6 +2,8 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 import App from './modules/App/App';
+import Map from './modules/Home/pages/MapPage/MapPage';
+import Camera from './modules/Home/pages/CamPage/Camera';
 
 // require.ensure polyfill for node
 if (typeof require.ensure !== 'function') {
@@ -18,7 +20,7 @@ if (process.env.NODE_ENV !== 'production') {
   // Require async routes only in development for react-hot-reloader to work.
   // require('./modules/Post/pages/PostListPage/PostListPage');
   // require('./modules/Post/pages/PostDetailPage/PostDetailPage');
-  require('./modules/Home/Index');
+  require('./modules/Home/pages/MainPage/Index');
 }
 
 // react-router setup with code-splitting
@@ -28,7 +30,7 @@ export default (
     <IndexRoute
       getComponent={(nextState, cb) => {
         require.ensure([], require => {
-          cb(null, require('./modules/Home/Index').default);
+          cb(null, require('./modules/Home/pages/MainPage/Index').default);
         });
       }}
     />
@@ -40,5 +42,8 @@ export default (
         });
       }}
     /> */}
+    <Route path="/camera" component={Camera} />
+    <Route path="/map" component={Map} />
   </Route>
+
 );
