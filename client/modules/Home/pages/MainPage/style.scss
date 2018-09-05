@@ -1,9 +1,5 @@
 .home-page {
 
-  // h2 {
-  //   font-size: 2vw;
-  // }
-
   section {
     margin: 3em auto;
 
@@ -50,7 +46,7 @@
     -moz-box-shadow: 1px 2px 4px rgba(0, 0, 0,0.5);
     -webkit-box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
     box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
-    font-size: 5vw;
+    font-size: 4vw;
     // font-weight: bold;
 
     &:after {
@@ -74,7 +70,7 @@
       display: flex;
       align-items: center;
       margin-top: 5%;
-      font-size: 4.5vw;
+      font-size: 3.5vw;
 
       & > .traffic-text {
         margin-left: 5%;
@@ -106,7 +102,7 @@
     div.weather {
       display: flex;
       align-items: center;
-      font-size: 4vw;
+      font-size: 3vw;
       margin-top: 5%;
       margin-right: 10%;
       font-family: 'Arial Bold';
@@ -140,7 +136,7 @@
 
     & > .currency-text {
       margin-left: 5%;
-      font-size: 3.5vw;
+      font-size: 3vw;
     }
   }
 
@@ -158,7 +154,7 @@
 
     div.destination-text {
       margin-left: 10%;
-      font-size: 5.5vw;
+      font-size: 4.5vw;
       display: inline-block;
       flex: 1;
     }
@@ -199,14 +195,14 @@
       }
   
       h3 {
-        font-size: 5vw;
+        font-size: 3vw;
         padding-top: 20%;
         text-transform: uppercase;
         font-weight: normal;
       }
   
       p {
-        font-size: 4vw;
+        font-size: 3vw;
       }
   
       .switch-btn {

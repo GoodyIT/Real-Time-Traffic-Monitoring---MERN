@@ -22,7 +22,6 @@ class Camera extends Component {
     render() {
         const { camera } = this.props;
         
-        console.log('--- camera ---', camera);
         return (
             <div>
                 <Helmet>
@@ -32,7 +31,7 @@ class Camera extends Component {
                 <AppBar position="static" className="app-bar">
                     <Toolbar>
                     <Link to="/">
-                        <IconButton className="back-btn" color="inherit" aria-label="Menu">
+                        <IconButton className="back-btn" color="white" aria-label="Menu" style={{color: 'white'}}>
                             <KeyboardBackspace />
                         </IconButton>
                     </Link>
@@ -41,7 +40,7 @@ class Camera extends Component {
                     </Typography>
                     </Toolbar>
                 </AppBar>
-                {camera !== null && camera.camera !== undefined ? <div><img src={camera.camera.image1} alt="Currency Icon" width="100%" height="auto" /><img src={camera.camera.image2} alt="Currency Icon" width="100%" height="auto"  /></div> : ''}
+                {camera !== null && camera.camera !== undefined ? <div><img src={camera.camera[0].image1} alt="Currency Icon" width="100%" height="auto" /><img src={camera.camera[0].image2} alt="Currency Icon" width="100%" height="auto"  /></div> : ''}
             </div>
         );
     }

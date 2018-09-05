@@ -24,7 +24,7 @@ class MapPage extends Component {
                 <AppBar position="static" className="app-bar">
                     <Toolbar>
                     <Link to="/">
-                        <IconButton className="back-btn" color="inherit" aria-label="Menu">
+                        <IconButton className="back-btn" color="inherit" aria-label="Menu" style={{color: 'white'}}>
                             <KeyboardBackspace />
                         </IconButton>
                     </Link>

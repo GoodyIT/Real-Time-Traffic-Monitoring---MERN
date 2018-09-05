@@ -19,6 +19,10 @@ router.route('/traffic/:src/:dst').get(WeatherController.getTraffic);
 // Get all Posts
 router.route('/posts').get(PostController.getPosts);
 
+router.route('/status').get((req, res) => {
+    res.json({status: 'Running healthy.'});
+});
+
 // Get one post by cuid
 router.route('/posts/:cuid').get(PostController.getPost);
 

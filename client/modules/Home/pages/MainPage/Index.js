@@ -29,20 +29,26 @@ const theme = createMuiTheme({
 class Index extends Component {
   constructor(props) {
     super(props);
-    
-    this.state = {
-      src: {
-        'code': 'SG',
-        'title': 'Singapore',
-        'path': 'Woodlands+Checkpoint,+21+Woodlands+Crossing,+738203',
-        'place_id': 'ChIJcax8Ev0S2jER7fTRxrPHz2w',
-      },
-      dst: {
-        'code': 'MY',
-        'title': 'Malaysia',
-        'path': 'Sultan+Iskandar+Complex+Customs,+Jalan+Jim+Quee,+Bukit+Chagar,+80300+Johor+Bahru,+Johor,+Malaysia',
-        'place_id': 'ChIJ4-MEgNwS2jERPDLDNgWnENA',
+    let routeInfo =localStorage.getItem('route');
+    if (routeInfo != null) {
+        this.state = JSON.parse(routeInfo);
+    } else {
+      routeInfo = {
+        src: {
+          code: 'SG',
+          title: 'Singapore',
+          path: 'Woodlands+Checkpoint,+21+Woodlands+Crossing,+738203',
+          place_id: 'ChIJcax8Ev0S2jER7fTRxrPHz2w',
+        },
+        dst: {
+          code: 'MY',
+          title: 'Malaysia',
+          path: 'Sultan+Iskandar+Complex+Customs,+Jalan+Jim+Quee,+Bukit+Chagar,+80300+Johor+Bahru,+Johor,+Malaysia',
+          place_id: 'ChIJ4-MEgNwS2jERPDLDNgWnENA',
+        }
       }
+      this.state = routeInfo;
+      localStorage.setItem('route', routeInfo);
     }
 
     this.switchLocation = this.switchLocation.bind(this);
@@ -52,7 +58,9 @@ class Index extends Component {
     let temp = this.state.src;
     let src = this.state.dst;
     let dst = temp;
-    this.setState({src: this.state.dst, dst: temp});
+    let routeInfo = {src: this.state.dst, dst: temp};
+    this.setState(routeInfo);
+    localStorage.setItem('route', JSON.stringify(routeInfo));
     this.props.dispatch(onLoadTrafficInfo(src.code, dst.code))
   }
     /**
@@ -75,19 +83,26 @@ class Index extends Component {
       USD = rate.USD.toFixed(3);
     }
 
-    let weatherSummary = weather.weather ? weather.weather.summary : '';
-    let temperature = weather.weather ? weatherSummary + ' ' + weather.weather.temperature + ' °C' : '';
+    let weatherSummary = weather.weather ? weather.weather[0].summary : '';
+    let temperature = weather.weather ? weather.weather[0].temperature + ' °C' : '';
     let today = moment(new Date()).format('dddd HH:mm A');
 
     let est = traffic && traffic.traffic !== undefined ? traffic.traffic.est : '';
     let trafficStatus = traffic && traffic.traffic !== undefined ? traffic.traffic.status : '';
-    let trafficColor = trafficStatus.includes('Heavy') ? 'red' : 'black';
-    let trafficSign = trafficStatus.includes('Heavy') ? RED_RIGHT : GREEN_RIGHT;
-    
+    let trafficColor = 'red';
+    let trafficSign = RED_RIGHT;
+    if (trafficStatus.includes('Normal')) {
+      trafficSign = YELLOW_RIGHT;
+      trafficColor = 'yellow';
+    } else if (trafficStatus.includes('Light')) {
+      trafficSign = GREEN_RIGHT;
+      trafficColor = 'green';
+    }
+
     return (
       <article>
         <Helmet>
-          <title>Home Page</title>
+          <title>Causeway Live</title>
           <meta name="description" content="A React.js Boilerplate application homepage" />
         </Helmet>
         <div className="home-page">
@@ -98,13 +113,13 @@ class Index extends Component {
                 <div className="image-wrapper"><img src={trafficSign} alt="traffic light" /></div>
                 <div className="traffic-text">
                   <div className="src-dst">{this.state.src.title} -> {this.state.dst.title}</div>
-                  <div className="est">EST {est} (<span className="traffic-type" style={{ color: trafficColor }}>{trafficStatus}</span>)</div>
+                  <div className="est"><div style={{display:'inline-block'}}>EST {est}&nbsp;</div><div className="traffic-type" style={{ color: trafficColor, display: 'inline-block' }}> ({trafficStatus})</div></div>
                 </div>
               </div>
               <div className="weather">
                 <div className="weather-text">
                   <div className="time">{today}</div>
-                  <div className="summary">{temperature}</div>
+                  <div className="summary" style={{ display: 'inline-block'}}>{weatherSummary}</div><div style={{ display: 'inline-block'}}>&nbsp;{temperature}</div>
                 </div>
                 <div className="weather-icon"><img src={WEATHER_ICON} alt="weather icon" /></div>
               </div>

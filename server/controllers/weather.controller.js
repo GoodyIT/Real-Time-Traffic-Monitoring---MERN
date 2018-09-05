@@ -32,7 +32,11 @@ function addWeatherData(req, res) {
   //   // res.json();
   //   console.log({ weather: saved });
   // });
-  let sql = 'insert into weather (summary, temperature) values("' + String(req.currently.summary) + '", "' + String(req.currently.temperature) + '")';
+  let temperature = (req.currently.temperature - 32) * 5 / 9;
+  if (temperature !== undefined) {
+    temperature = temperature.toFixed(0);
+  }
+  let sql = 'insert into weather (summary, temperature) values("' + String(req.currently.summary) + '", "' + String(temperature) + '")';
   console.log('weather insert sql', sql);
   connection.query(sql, function(err, results, fields) {
     if (err) {
@@ -74,6 +78,9 @@ export function getWeather(req, res) {
     }
     if (results.length > 0) {
       res.json({ weather: results });
+        // if (results.length > 0 && results[0].summary.toString().toLowerCase().includes('rain')) {
+        //   setTimeout(function() { sendPushMessage("It's rainining"); }, 5000);
+        // }
     }
   });
 }
@@ -123,7 +130,7 @@ function addTrafficInfo(req, src, dst, res) {
   //   console.log({ traffic: saved });
   // });
 
-  const durationValue = sanitizeHtml(temp.duration.value);
+  // const durationValue = sanitizeHtml(temp.duration.value);
   const estValue = sanitizeHtml(temp.duration_in_traffic.value);
   const _src = sanitizeHtml(src);
   const _dst = sanitizeHtml(dst);
@@ -131,8 +138,15 @@ function addTrafficInfo(req, src, dst, res) {
   const est = sanitizeHtml(temp.duration_in_traffic.text);
 
   let status = 'Heavy Traffic';
-  if (estValue - durationValue <= 10 * 60) {
-    status = 'Normal Traffic';
+  if (estValue < 10 * 60) {
+    status = 'Light Traffic';
+  } else if (estValue <= 20 * 60) {
+    status = 'Heavy Traffic';
+  }
+
+  if (estValue >= 45 * 60) {
+    // Send push
+    setTimeout(() => { sendPushMessage('There is a traffic jam on the road'); }, 3000);
   }
 
   const sql = 'insert into traffic (src, dst, duration, est, status) values("' +
@@ -201,10 +215,38 @@ export function getTraffic(req, res) {
     }
     console.log('--- gettraffic -- ', results);
     if (results.length > 0) {
-      if (results[0].status.toString().toLowerCase().includes('traffic')) {
-        setTimeout(() => { sendPushMessage('There is a traffic jam on the road'); }, 0);
-      }
+      // if (results[0].status.toString().toLowerCase().includes('traffic')) {
+      //   setTimeout(() => { sendPushMessage('There is a traffic jam on the road'); }, 0);
+      // }
       res.json({ traffic: results[0] });
     }
+  });
+}
+
+export function scheduleOnOnSignal() {
+  schedule.scheduleJob('12 * * *', () => {
+    // Send signal every 12 hours if there is raining.
+    connection.query('select * from traffic order by dateAdded desc limit 1', function(error, results, fields) {
+      if (error) {
+        throw error;
+      }
+      if (results.length > 0) {
+        if (results.length > 0 && results[0].summary.toString().toLowerCase().includes('rain')) {
+          setTimeout(function() { sendPushMessage("It's rainining"); }, 5000);
+        }
+      }
+    });
+
+    // Send signal every 12 hours if there is heavy traffic.
+    connection.query('select * from weather order by dateAdded desc limit 1', function(error, results, fields) {
+      if (error) {
+        throw error;
+      }
+      if (results.length > 0) {
+        if (results[0].status.toString().toLowerCase().includes('heavy')) {
+          setTimeout(() => { sendPushMessage('There is a traffic jam on the road'); }, 0);
+        }
+      }
+    });
   });
 }

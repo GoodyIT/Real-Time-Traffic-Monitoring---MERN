@@ -24,7 +24,11 @@ export class App extends Component {
   }
 
   componentDidMount() {
-    this.setState({isMounted: true}); // eslint-disable-line
+    this.timer = setInterval(() => this.setState(() => ({ isMounted: true })), 2000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timer);
   }
 
   toggleAddPostSection = () => {
@@ -32,31 +36,44 @@ export class App extends Component {
   };
 
   render() {
-    return (
-      <div>
-        {this.state.isMounted && !window.devToolsExtension && process.env.NODE_ENV === 'development' && <DevTools />}
+    console.log('isMounted ', this.state.isMounted);
+    if (!this.state.isMounted) {
+      return (
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          <img
+          src="https://media.giphy.com/media/fxzFm2JmPKW6A9Tuv8/giphy.gif" 
+          alt="load_process"
+          border="0"
+                        />
+            </div>
+        // {/* <div className="se-pre-con"></div> */}
+      );
+    } else {
+      return (
         <div>
-          <Helmet
-            title="MERN Starter - Blog App"
-            titleTemplate="%s - Blog App"
-            meta={[
-              { charset: 'utf-8' },
-              {
-                'http-equiv': 'X-UA-Compatible',
-                content: 'IE=edge',
-              },
-              {
-                name: 'viewport',
-                content: 'width=device-width, initial-scale=1',
-              },
-            ]}
-          />
-          <div className="container">
-            {this.props.children}
+          {this.state.isMounted && !window.devToolsExtension && process.env.NODE_ENV === 'development' && <DevTools />}
+          <div>
+            <Helmet
+              title="Causeway Live"
+              meta={[
+                { charset: 'utf-8' },
+                {
+                  'http-equiv': 'X-UA-Compatible',
+                  content: 'IE=edge',
+                },
+                {
+                  name: 'viewport',
+                  content: 'width=device-width, initial-scale=1',
+                },
+              ]}
+            />
+            <div className="container">
+              {this.props.children}
+            </div>
           </div>
         </div>
-      </div>
-    );
+      );
+    }
   }
 }
 

@@ -47,7 +47,7 @@ import routes from '../client/routes';
 import { fetchComponentData } from './util/fetchData';
 import posts from './routes/post.routes';
 import serverConfig from './config';
-import { scheduleOnTrafficFromSGtoMY, scheduleOnTrafficFromMYtoSG, scheduleOnWeather, scheduleOnClearTables } from './controllers/weather.controller.js';
+import { scheduleOnTrafficFromSGtoMY, scheduleOnTrafficFromMYtoSG, scheduleOnWeather, scheduleOnClearTables, scheduleOnOnSignal } from './controllers/weather.controller.js';
 import { scheduleOnCamera } from './controllers/camera.controller.js';
 
 // Run the cron job for weather data in every 5 min
@@ -64,6 +64,9 @@ scheduleOnCamera();
 
 // Run the cron job to clear tables for traffic, camera
 scheduleOnClearTables();
+
+// Send a onesignal every 12 hours for raining, heavy traffic
+scheduleOnOnSignal();
 
 // Set native promises as mongoose promise
 // mongoose.Promise = global.Promise;
@@ -111,6 +114,7 @@ const renderFullPage = (html, initialState) => {
         <link rel="shortcut icon" href="http://res.cloudinary.com/hashnode/image/upload/v1455629445/static_imgs/mern/mern-favicon-circle-fill.png" type="image/png" />
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYc3U2zpF5V8DiAsY9PSSq0SF_CeRbdkA"></script>
         <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+        
         <script>
           var OneSignal = window.OneSignal || [];
           OneSignal.push(function() {
