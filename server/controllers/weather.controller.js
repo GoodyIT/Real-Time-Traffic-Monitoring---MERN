@@ -226,19 +226,19 @@ export function getTraffic(req, res) {
 export function scheduleOnOnSignal() {
   schedule.scheduleJob('12 * * *', () => {
     // Send signal every 12 hours if there is raining.
-    connection.query('select * from traffic order by dateAdded desc limit 1', function(error, results, fields) {
+    connection.query('select * from weather order by dateAdded desc limit 1', function(error, results, fields) {
       if (error) {
         throw error;
       }
       if (results.length > 0) {
-        if (results.length > 0 && results[0].summary.toString().toLowerCase().includes('rain')) {
+        if (results[0].summary.toString().toLowerCase().includes('rain')) {
           setTimeout(function() { sendPushMessage("It's rainining"); }, 5000);
         }
       }
     });
 
     // Send signal every 12 hours if there is heavy traffic.
-    connection.query('select * from weather order by dateAdded desc limit 1', function(error, results, fields) {
+    connection.query('select * from traffic order by dateAdded desc limit 1', function(error, results, fields) {
       if (error) {
         throw error;
       }

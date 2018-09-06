@@ -48,7 +48,7 @@ class Index extends Component {
         }
       }
       this.state = routeInfo;
-      localStorage.setItem('route', routeInfo);
+      localStorage.setItem('route', JSON.stringify(routeInfo));
     }
 
     this.switchLocation = this.switchLocation.bind(this);
