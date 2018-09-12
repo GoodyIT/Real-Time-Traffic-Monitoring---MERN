@@ -1,0 +1,151 @@
+13:15:00.025 INFO  fetch weather data in every 5 mins 
+ 
+13:15:00.276 INFO  ----------------- save traffic info in db every 5 min ------------ 
+13:15:00.278 INFO  traffic insert sqlinsert into traffic (src, dst, duration, est, status) values("SG", "MY", "5 mins", "6 mins", "Light Traffic") 
+13:15:00.290 INFO  weather info inserted 
+13:15:00.471 INFO  ----------------- save traffic info in db every 5 min ------------ 
+13:15:00.471 INFO  traffic insert sqlinsert into traffic (src, dst, duration, est, status) values("MY", "SG", "16 mins", "43 mins", "Heavy Traffic") 
+13:15:00.486 INFO  weather info inserted 
+13:15:01.300 INFO  weather insert sqlinsert into weather (summary, temperature) values("Humid and Mostly Cloudy", "29") 
+13:15:01.322 INFO  weather info inserted 
+13:16:18.025 INFO  traffic get, select * from traffic where src="MY" and dst="SG" order by dateAdded desc limit 1 
+13:16:18.031 INFO  --- gettraffic -- [{"src":"MY","dst":"SG","duration":"16 mins","est":"43 mins","status":"Heavy Traffic","dateAdded":"2018-09-08T06:15:00.000Z"}] 
+13:20:00.017 INFO  fetch weather data in every 5 mins 
+ 
+13:20:00.313 INFO  ----------------- save traffic info in db every 5 min ------------ 
+13:20:00.313 INFO  traffic insert sqlinsert into traffic (src, dst, duration, est, status) values("SG", "MY", "5 mins", "6 mins", "Light Traffic") 
+13:20:00.337 INFO  weather info inserted 
+13:20:00.370 INFO  ----------------- save traffic info in db every 5 min ------------ 
+13:20:00.370 INFO  traffic insert sqlinsert into traffic (src, dst, duration, est, status) values("MY", "SG", "16 mins", "46 mins", "Heavy Traffic") 
+13:20:00.383 INFO  weather info inserted 
+13:20:01.192 INFO  weather insert sqlinsert into weather (summary, temperature) values("Humid and Mostly Cloudy", "29") 
+13:20:01.218 INFO  weather info inserted 
+13:20:04.065 INFO  {"id":"e49873c8-8ae8-4370-8222-4f59adebd87a","recipients":3} 
+13:25:00.037 INFO  fetch weather data in every 5 mins 
+ 
+13:25:00.419 INFO  ----------------- save traffic info in db every 5 min ------------ 
+13:25:00.419 INFO  traffic insert sqlinsert into traffic (src, dst, duration, est, status) values("SG", "MY", "5 mins", "6 mins", "Light Traffic") 
+13:25:00.435 INFO  weather info inserted 
+13:25:00.542 INFO  ----------------- save traffic info in db every 5 min ------------ 
+13:25:00.542 INFO  traffic insert sqlinsert into traffic (src, dst, duration, est, status) values("MY", "SG", "16 mins", "43 mins", "Heavy Traffic") 
+13:25:00.555 INFO  weather info inserted 
+13:25:01.456 INFO  weather insert sqlinsert into weather (summary, temperature) values("Humid and Mostly Cloudy", "29") 
+13:25:01.479 INFO  weather info inserted 
+13:30:00.012 INFO  fetch weather data in every 5 mins 
+ 
+13:30:00.467 INFO  ----------------- save traffic info in db every 5 min ------------ 
+13:30:00.467 INFO  traffic insert sqlinsert into traffic (src, dst, duration, est, status) values("SG", "MY", "5 mins", "9 mins", "Light Traffic") 
+13:30:00.495 INFO  weather info inserted 
+13:30:00.574 INFO  ----------------- save traffic info in db every 5 min ------------ 
+13:30:00.574 INFO  traffic insert sqlinsert into traffic (src, dst, duration, est, status) values("MY", "SG", "16 mins", "44 mins", "Heavy Traffic") 
+13:30:00.591 INFO  weather info inserted 
+13:30:01.523 INFO  weather insert sqlinsert into weather (summary, temperature) values("Humid and Mostly Cloudy", "29") 
+13:30:01.548 INFO  weather info inserted 
+13:35:00.051 INFO  fetch weather data in every 5 mins 
+ 
+13:35:00.536 INFO  ----------------- save traffic info in db every 5 min ------------ 
+13:35:00.536 INFO  traffic insert sqlinsert into traffic (src, dst, duration, est, status) values("SG", "MY", "5 mins", "8 mins", "Light Traffic") 
+13:35:00.567 INFO  weather info inserted 
+13:35:00.743 INFO  ----------------- save traffic info in db every 5 min ------------ 
+13:35:00.743 INFO  traffic insert sqlinsert into traffic (src, dst, duration, est, status) values("MY", "SG", "16 mins", "45 mins", "Heavy Traffic") 
+13:35:00.754 INFO  weather info inserted 
+13:35:01.598 INFO  weather insert sqlinsert into weather (summary, temperature) values("Humid and Mostly Cloudy", "29") 
+13:35:01.620 INFO  weather info inserted 
+13:40:00.011 INFO  fetch weather data in every 5 mins 
+ 
+13:40:00.553 INFO  ----------------- save traffic info in db every 5 min ------------ 
+13:40:00.553 INFO  traffic insert sqlinsert into traffic (src, dst, duration, est, status) values("SG", "MY", "5 mins", "9 mins", "Light Traffic") 
+13:40:00.565 INFO  weather info inserted 
+13:40:00.690 INFO  ----------------- save traffic info in db every 5 min ------------ 
+13:40:00.690 INFO  traffic insert sqlinsert into traffic (src, dst, duration, est, status) values("MY", "SG", "16 mins", "46 mins", "Heavy Traffic") 
+13:40:00.702 INFO  weather info inserted 
+13:40:01.623 INFO  weather insert sqlinsert into weather (summary, temperature) values("Humid and Mostly Cloudy", "29") 
+13:40:01.643 INFO  weather info inserted 
+13:40:04.396 INFO  {"id":"312d96a1-3cb6-4b8c-ab8b-da0ea62b844d","recipients":3} 
+13:45:00.024 INFO  fetch weather data in every 5 mins 
+ 
+13:45:00.489 INFO  ----------------- save traffic info in db every 5 min ------------ 
+13:45:00.489 INFO  traffic insert sqlinsert into traffic (src, dst, duration, est, status) values("SG", "MY", "5 mins", "10 mins", "Normal Traffic") 
+13:45:00.491 INFO  ----------------- save traffic info in db every 5 min ------------ 
+13:45:00.491 INFO  traffic insert sqlinsert into traffic (src, dst, duration, est, status) values("MY", "SG", "16 mins", "43 mins", "Heavy Traffic") 
+13:45:00.505 INFO  weather info inserted 
+13:45:00.517 INFO  weather info inserted 
+13:45:02.708 INFO  weather insert sqlinsert into weather (summary, temperature) values("Humid and Mostly Cloudy", "29") 
+13:45:02.722 INFO  weather info inserted 
+13:50:00.004 INFO  fetch weather data in every 5 mins 
+ 
+13:50:00.537 INFO  ----------------- save traffic info in db every 5 min ------------ 
+13:50:00.538 INFO  traffic insert sqlinsert into traffic (src, dst, duration, est, status) values("SG", "MY", "5 mins", "10 mins", "Normal Traffic") 
+13:50:00.540 INFO  ----------------- save traffic info in db every 5 min ------------ 
+13:50:00.540 INFO  traffic insert sqlinsert into traffic (src, dst, duration, est, status) values("MY", "SG", "16 mins", "45 mins", "Heavy Traffic") 
+13:50:00.632 INFO  weather info inserted 
+13:50:00.664 INFO  weather info inserted 
+13:50:01.505 INFO  weather insert sqlinsert into weather (summary, temperature) values("Humid and Mostly Cloudy", "29") 
+13:50:01.513 INFO  weather info inserted 
+13:50:03.904 INFO  {"id":"0c5a3be6-50f0-423f-b9c8-8fb2d0913ad7","recipients":3} 
+13:55:00.009 INFO  fetch weather data in every 5 mins 
+ 
+13:55:00.604 INFO  ----------------- save traffic info in db every 5 min ------------ 
+13:55:00.604 INFO  traffic insert sqlinsert into traffic (src, dst, duration, est, status) values("SG", "MY", "5 mins", "10 mins", "Normal Traffic") 
+13:55:00.606 INFO  ----------------- save traffic info in db every 5 min ------------ 
+13:55:00.606 INFO  traffic insert sqlinsert into traffic (src, dst, duration, est, status) values("MY", "SG", "16 mins", "47 mins", "Heavy Traffic") 
+13:55:00.623 INFO  weather info inserted 
+13:55:00.635 INFO  weather info inserted 
+13:55:01.014 INFO  weather insert sqlinsert into weather (summary, temperature) values("Humid and Mostly Cloudy", "29") 
+13:55:01.027 INFO  weather info inserted 
+13:55:03.966 INFO  {"id":"00226447-afc6-409c-9974-7f71bd060bd0","recipients":3} 
+14:00:00.002 INFO  fetch weather data in every 5 mins 
+ 
+14:00:00.673 INFO  ----------------- save traffic info in db every 5 min ------------ 
+14:00:00.673 INFO  traffic insert sqlinsert into traffic (src, dst, duration, est, status) values("SG", "MY", "5 mins", "10 mins", "Normal Traffic") 
+14:00:00.675 INFO  ----------------- save traffic info in db every 5 min ------------ 
+14:00:00.675 INFO  traffic insert sqlinsert into traffic (src, dst, duration, est, status) values("MY", "SG", "16 mins", "46 mins", "Heavy Traffic") 
+14:00:00.706 INFO  weather info inserted 
+14:00:00.719 INFO  weather info inserted 
+14:00:01.673 INFO  weather insert sqlinsert into weather (summary, temperature) values("Humid and Mostly Cloudy", "29") 
+14:00:01.702 INFO  weather info inserted 
+14:00:04.043 INFO  {"id":"bad44883-4d52-4006-8188-74e7538b5a83","recipients":3} 
+14:05:00.006 INFO  fetch weather data in every 5 mins 
+ 
+14:05:00.253 INFO  ----------------- save traffic info in db every 5 min ------------ 
+14:05:00.253 INFO  traffic insert sqlinsert into traffic (src, dst, duration, est, status) values("SG", "MY", "5 mins", "11 mins", "Normal Traffic") 
+14:05:00.265 INFO  weather info inserted 
+14:05:00.770 INFO  ----------------- save traffic info in db every 5 min ------------ 
+14:05:00.770 INFO  traffic insert sqlinsert into traffic (src, dst, duration, est, status) values("MY", "SG", "16 mins", "46 mins", "Heavy Traffic") 
+14:05:00.782 INFO  weather info inserted 
+14:05:01.279 INFO  weather insert sqlinsert into weather (summary, temperature) values("Humid and Mostly Cloudy", "29") 
+14:05:01.302 INFO  weather info inserted 
+14:05:04.142 INFO  {"id":"a94ba31a-d17b-47f0-b504-f603a931ffe0","recipients":3} 
+14:10:00.051 INFO  fetch weather data in every 5 mins 
+ 
+14:10:00.306 INFO  ----------------- save traffic info in db every 5 min ------------ 
+14:10:00.306 INFO  traffic insert sqlinsert into traffic (src, dst, duration, est, status) values("SG", "MY", "5 mins", "9 mins", "Light Traffic") 
+14:10:00.339 INFO  weather info inserted 
+14:10:00.465 INFO  ----------------- save traffic info in db every 5 min ------------ 
+14:10:00.465 INFO  traffic insert sqlinsert into traffic (src, dst, duration, est, status) values("MY", "SG", "16 mins", "48 mins", "Heavy Traffic") 
+14:10:00.486 INFO  weather info inserted 
+14:10:01.382 INFO  weather insert sqlinsert into weather (summary, temperature) values("Humid and Mostly Cloudy", "29") 
+14:10:01.407 INFO  weather info inserted 
+14:10:04.111 INFO  {"id":"c4bb580a-2b57-4e47-a3ca-9b24787b5270","recipients":3} 
+14:15:00.017 INFO  fetch weather data in every 5 mins 
+ 
+14:15:00.400 INFO  ----------------- save traffic info in db every 5 min ------------ 
+14:15:00.400 INFO  traffic insert sqlinsert into traffic (src, dst, duration, est, status) values("SG", "MY", "5 mins", "8 mins", "Light Traffic") 
+14:15:00.428 INFO  weather info inserted 
+14:15:00.503 INFO  ----------------- save traffic info in db every 5 min ------------ 
+14:15:00.503 INFO  traffic insert sqlinsert into traffic (src, dst, duration, est, status) values("MY", "SG", "16 mins", "47 mins", "Heavy Traffic") 
+14:15:00.525 INFO  weather info inserted 
+14:15:01.481 INFO  weather insert sqlinsert into weather (summary, temperature) values("Humid and Mostly Cloudy", "29") 
+14:15:01.505 INFO  weather info inserted 
+14:15:04.185 INFO  {"id":"c2aa4590-88a7-407f-8b3f-df8c7b7bd524","recipients":3} 
+14:20:00.036 INFO  fetch weather data in every 5 mins 
+ 
+14:20:00.511 INFO  ----------------- save traffic info in db every 5 min ------------ 
+14:20:00.511 INFO  traffic insert sqlinsert into traffic (src, dst, duration, est, status) values("SG", "MY", "5 mins", "9 mins", "Light Traffic") 
+14:20:00.544 INFO  weather info inserted 
+14:20:00.642 INFO  ----------------- save traffic info in db every 5 min ------------ 
+14:20:00.642 INFO  traffic insert sqlinsert into traffic (src, dst, duration, est, status) values("MY", "SG", "16 mins", "46 mins", "Heavy Traffic") 
+14:20:00.652 INFO  weather info inserted 
+14:20:02.863 INFO  weather insert sqlinsert into weather (summary, temperature) values("Humid and Mostly Cloudy", "29") 
+14:20:02.894 INFO  weather info inserted 
+14:20:04.273 INFO  {"id":"aa759be5-51a4-4d33-9553-2d1c024756da","recipients":3} 

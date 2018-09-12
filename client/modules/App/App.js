@@ -43,9 +43,8 @@ export class App extends Component {
           <img
           src="https://media.giphy.com/media/fxzFm2JmPKW6A9Tuv8/giphy.gif" 
           alt="load_process"
-          border="0"
-                        />
-            </div>
+          border="0"/>
+        </div>
         // {/* <div className="se-pre-con"></div> */}
       );
     } else {

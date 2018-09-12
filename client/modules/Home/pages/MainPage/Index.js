@@ -87,8 +87,8 @@ class Index extends Component {
     let temperature = weather.weather ? weather.weather[0].temperature + ' °C' : '';
     let today = moment(new Date()).format('dddd HH:mm A');
 
-    let est = traffic && traffic.traffic !== undefined ? traffic.traffic.est : '';
-    let trafficStatus = traffic && traffic.traffic !== undefined ? traffic.traffic.status : '';
+    let est = traffic && traffic.traffic !== undefined ? 'EST ' + traffic.traffic.est + ' ' : '';
+    let trafficStatus = traffic && traffic.traffic !== undefined ? '(' + traffic.traffic.status + ')': '';
     let trafficColor = 'red';
     let trafficSign = RED_RIGHT;
     if (trafficStatus.includes('Normal')) {
@@ -113,7 +113,7 @@ class Index extends Component {
                 <div className="image-wrapper"><img src={trafficSign} alt="traffic light" /></div>
                 <div className="traffic-text">
                   <div className="src-dst">{this.state.src.title} -> {this.state.dst.title}</div>
-                  <div className="est"><div style={{display:'inline-block'}}>EST {est}&nbsp;</div><div className="traffic-type" style={{ color: trafficColor, display: 'inline-block' }}> ({trafficStatus})</div></div>
+                  <div className="est"><div style={{display:'inline-block'}}> {est} </div><div className="traffic-type" style={{ color: trafficColor, display: 'inline-block' }}> {trafficStatus}</div></div>
                 </div>
               </div>
               <div className="weather">

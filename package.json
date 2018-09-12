@@ -9,7 +9,7 @@
     "check-coverage": "nyc check-coverage --statements 100 --branches 100 --functions 100 --lines 100",
     "start": "cross-env BABEL_DISABLE_CACHE=1 NODE_ENV=development nodemon index.js",
     "prod": "cross-env NODE_ENV=production node index.js",
-    "bs": "npm run clean && npm run build && npm run build:server && npm run start:prod",
+    "bs": "npm run clean && npm run build && npm run build:server && npm run prod",
     "build": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js",
     "build:server": "cross-env NODE_ENV=production webpack --config webpack.config.server.js",
     "clean": "rimraf dist",
@@ -66,7 +66,8 @@
     "redux-thunk": "^2.1.0",
     "sanitize-html": "^1.11.4",
     "simple-onesignal": "^1.0.4",
-    "styled-components": "^3.4.5"
+    "styled-components": "^3.4.5",
+    "winston": "^3.1.0"
   },
   "devDependencies": {
     "ava": "^0.15.2",

@@ -1,0 +1,21 @@
+[Unit]
+Description=Caueway Server
+#Requires=After=mysql.service       # Requires the mysql service to run first
+
+[Service]
+ExecStart=/usr/local/bin/node  /var/www/traffic/index.js
+# Required on some systems
+#WorkingDirectory=/opt/nodeserver
+Restart=always
+ # Restart service after 10 seconds if node service crashes
+ RestartSec=10
+ # Output to syslog
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=causeway
+#User=<alternate user>
+#Group=<alternate group>
+Environment=NODE_ENV=production PORT=8000
+
+[Install]
+WantedBy=multi-user.target

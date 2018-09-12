@@ -84,12 +84,33 @@ scheduleOnOnSignal();
 //   });
 // }
 
+function logErrors(err, req, res, next) {
+  console.error(err.stack);
+  next(err);
+}
+
+function clientErrorHandler(err, req, res, next) {
+  if (req.xhr) {
+    res.status(500).send({ error: 'Something failed!' });
+  } else {
+    next(err);
+  }
+}
+
+function errorHandler(err, req, res, next) {
+  res.status(500);
+  res.render('error', { error: err });
+}
+
 // Apply body Parser and server public assets and routes
 app.use(compression());
 app.use(bodyParser.json({ limit: '20mb' }));
 app.use(bodyParser.urlencoded({ limit: '20mb', extended: false }));
 app.use(Express.static(path.resolve(__dirname, '../dist/client')));
 app.use('/api', posts);
+app.use(logErrors);
+app.use(clientErrorHandler);
+app.use(errorHandler);
 
 // Render Initial HTML
 const renderFullPage = (html, initialState) => {
@@ -117,15 +138,18 @@ const renderFullPage = (html, initialState) => {
         
         <script>
           var OneSignal = window.OneSignal || [];
-          OneSignal.push(function() {
-            OneSignal.init({
-              appId: "cf096ee6-4bb3-48bc-b7f7-c3cbf11b8c6d",
-              autoRegister: false,
-              notifyButton: {
-                enable: true,
-              },
-            });
-          });
+          OneSignal.push(["init", {
+            appId: "95e5d98e-bd41-4b70-b69c-d7eca26b01af",
+            autoRegister: false, /* Set to true to automatically prompt visitors */
+            notifyButton: {
+                enable: true /* Set to false to hide */
+            },
+            welcomeNotification: {
+              "title": "Causeway Live",
+              "message": "Thanks for subscribing!",
+            }
+          }]);
+          
         </script>
         </head>
       <body>
